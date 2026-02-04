@@ -14,7 +14,7 @@ A Python library and CLI tools to control Zhsunyco BLE e-ink displays (2.9" 296x
 Clone the repository and install in editable mode:
 
 ```bash
-git clone https://github.com/roxburghm/zhsunyco.git
+git clone https://github.com/roxburghm/zhsunyco-esl.git
 cd zhsunyco
 pip install -e .
 ```
