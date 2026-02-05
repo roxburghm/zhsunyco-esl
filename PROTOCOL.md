@@ -1,3 +1,7 @@
+'DEPRECATED: See PROTOCOL-V2.md`
+
+---
+
 # eTag / eLabel BLE Protocol Documentation
 
 **Target Device:** ET0290 (2.9-inch E-Ink Tag)  
