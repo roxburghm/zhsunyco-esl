@@ -9,15 +9,16 @@ from zhsunyco_esl import ZhsunycoClient, LabelConfig
 @click.option('--width', default=296, help='Width of the label')
 @click.option('--height', default=128, help='Height of the label')
 @click.option('--color', default='BWR', type=click.Choice(['BW', 'BWR']), help='Color mode')
-def main(mac, image, width, height, color):
+@click.option('--no-dither', is_flag=True, default=False, help='Disable Floyd-Steinberg dithering (for sharp graphics)')
+def main(mac, image, width, height, color, no_dither):
     """Sends an image to the Zhsunyco label, resizing and dithering it."""
-    
+
     config = LabelConfig(width=width, height=height)
     client = ZhsunycoClient(mac, config=config)
-    
-    print(f"Sending image {image} to {mac} (Color: {color})...")
+
+    print(f"Sending image {image} to {mac} (Color: {color}, Dither: {not no_dither})...")
     try:
-        asyncio.run(client.send_image_file(image, color_mode=color))
+        asyncio.run(client.send_image_file(image, color_mode=color, dither=not no_dither))
     except Exception as e:
         print(f"Error: {e}")
         ctx = click.get_current_context()

@@ -2,10 +2,22 @@
 
 A Python library and CLI tools to control Zhsunyco BLE e-ink displays (2.9" 296x128). This library allows you to send images, test patterns, and barcodes to the device over Bluetooth Low Energy (BLE).
 
+## Original Tag
+
+| | |
+|---|---|
+| Original !["Original"](/images/Z_ORIG.jpg) | Rewritten Display !["Alternate Barcode"](/images/Z_MY_BAR.jpg) |
+| Test Pattern !["Test Patterm"](/images/Z_TEST.jpg) | Rewritten!["Dithering"](/images/Z_CAT.jpg) |
+
+
+## Dev Possibilities
+
+!["Cat"](/images/Z_DEV.jpg)
+
 ## Features
 
-- **Protocol Implementation**: Full implementation of the reverse-engineered communication protocol (CRC16, RLE compression).
-- **Image Processing**: Automatic resizing and dithering of images to fit the e-ink display (Black/White/Red).
+- **Protocol Implementation**: Full implementation of the communication protocol (CRC16, RLE compression).
+- **Image Processing**: Automatic resizing and optional dithering of images to fit the e-ink display (Black/White/Red).
 - **CLI Tools**: Ready-to-use scripts for common tasks.
 - **Async Client**: Built on top of `bleak` for modern async Bluetooth support.
 
@@ -39,6 +51,7 @@ python scripts/send_image.py --mac "3D:00:00:E5:7D:76" --image "photo.jpg" --col
 - `--color`: `BWR` (Black/White/Red - default) or `BW` (Black/White only).
 - `--width`: Width of the label (default: 296).
 - `--height`: Height of the label (default: 128).
+- `--no-dither`: Don't use dithering.
 
 ### 2. Send Barcode
 
@@ -81,6 +94,17 @@ python scripts/send_weather.py --mac "3D:00:00:E5:7D:76"
 - `--mac` (Required): MAC address of the label.
 - `--color`: `BWR` (Black/White/Red - default) or `BW` (Black/White only).
 
+### 5. Reset Label
+
+Fetches temp and voltage information and resets the label to factory state.
+
+
+```bash
+python scripts/send_query.py --mac "3D:00:00:E5:7D:76"
+```
+
+**Options:**
+- `--mac` (Required): MAC address of the label.
 
 
 ## Library Usage

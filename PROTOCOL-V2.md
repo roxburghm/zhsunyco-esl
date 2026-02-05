@@ -153,7 +153,7 @@ The payload is a hex-ASCII string converted to bytes. It consists of one or two 
 
 | Plane | Value 0 | Value 1 |
 |-------|---------|---------|
-| **Black/White** | Black (ink) | White (no ink) |
+| **Black/White** | White (no ink) | Black (ink) |
 | **Red** | No red ink | Red ink |
 
 Pixels are processed **row-major** (for each Y from 0, for each X from 0). Both width and height are rounded up to multiples of 8 internally.
@@ -369,7 +369,7 @@ All 20 bytes are XORed with this key (no byte-9 skip).
 |------|-------------------|-----------------|
 | Command types | Only image (`0xFC`) | Three: `0xFC`, `0xF0`, `0xF2` |
 | CRC polynomial | 0x1021 (CCITT) | **0x8005** (ARC/IBM) |
-| BW plane polarity | 0=White, 1=Black | **0=Black, 1=White** |
+| BW plane polarity | 0=White, 1=Black | **Confirmed: 0=White, 1=Black** (same as V1) |
 | Identifier string | Always `easyTag` | `eTag-CO` for Text/Config |
 | Marker bytes | Always `B` `T` | `D` `E` for Text/Config |
 | Type ID | Only `0x62` | `0x5C` for Query and Text/Config |
